@@ -22,9 +22,9 @@ public class PersistidorDeAutomovel {
 		auto.setAnoModelo(2010);
 		auto.setModelo(modelo);
 		auto.getModelo().setMarca(marca);
-		auto.setObservacoes("observacoes");
+		auto.setObservacoes("observações");
 		auto.setTags(new ArrayList<String>());
-		auto.getTags().add("autom�tico");
+		auto.getTags().add("automático");
 		auto.getTags().add("novo");
 		auto.getTags().add("bom estado");
 		em.persist(auto);
