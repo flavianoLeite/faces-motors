@@ -15,7 +15,7 @@ public class PersistidorDeAutomovel {
 		tx.begin();
 		Modelo modelo = new Modelo("Fusca");
 		modelo.setPotencia(60);
-		Marca marca =  new Marca("Volkswagem");// em.getReference(Marca.class, 11L);
+		Marca marca =  new Marca("Volkswagem"); //em.getReference(Marca.class, 11L);
 		em.persist(modelo);
 		em.persist(marca);
 		Automovel auto = new Automovel();
