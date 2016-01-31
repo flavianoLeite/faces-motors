@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -13,17 +14,29 @@ import javax.persistence.ManyToOne;
 public class Automovel {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
 	@ManyToOne
 	private Modelo modelo;
+	
 	private Integer anoFabricacao;
 	private Integer anoModelo;
-	private String observacoes;
+	private String observacoes;	
+	private transient Integer idade;
+	
 	@ElementCollection @Column(length=20)
 	private List<String> tags;
+	
 	@ManyToMany
 	private List<Opcional> opcionais;
+	
+	
+	
+	public Automovel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	public List<Opcional> getOpcionais() {
 		return opcionais;
@@ -73,6 +86,12 @@ public class Automovel {
 	@Override
 	public String toString() {	
 		return this.id + " "+ getModelo().getMarca() + " modelo: " + modelo + " ano modelo: " + anoModelo + " fabrica��o: " + anoFabricacao;
+	}
+	public Integer getIdade() {
+		return idade;
+	}
+	public void setIdade(Integer idade) {
+		this.idade = idade;
 	}
 	
 }

@@ -13,13 +13,14 @@ public class PersistidorDeAutomovel {
 		EntityManager em = JPAUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		Modelo modelo = new Modelo("Fiesta");
-		Marca marca = new Marca("Ford");
+		Modelo modelo = new Modelo("Fusca");
+		modelo.setPotencia(60);
+		Marca marca =  new Marca("Volkswagem");// em.getReference(Marca.class, 11L);
 		em.persist(modelo);
 		em.persist(marca);
 		Automovel auto = new Automovel();
-		auto.setAnoFabricacao(2009);
-		auto.setAnoModelo(2010);
+		auto.setAnoFabricacao(1976);
+		auto.setAnoModelo(1976);
 		auto.setModelo(modelo);
 		auto.getModelo().setMarca(marca);
 		auto.setObservacoes("observações");

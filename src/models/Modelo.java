@@ -2,17 +2,25 @@ package models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Modelo {
-	@Id @GeneratedValue
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String descricao;
 	private Integer potencia;
 	@ManyToOne
 	private Marca marca;
+	
+	
+	public Modelo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Modelo(String descricao) {
 		this.descricao = descricao;
 	}
