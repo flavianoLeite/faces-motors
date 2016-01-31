@@ -35,13 +35,14 @@ public class AutomovelBean {
 		this.automovel = automovel;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Automovel> getAutomoveis() {
 		EntityManager em = JPAUtil.getEntityManager();
 		Query q = em.createQuery("select a from models.Automovel a", Automovel.class);	
 		
-		List<Automovel> lista = q.getResultList();
+		automoveis = q.getResultList();
 		em.close();
-		return lista;
+		return automoveis;
 	}
 
 	public void setAutomoveis(List<Automovel> automoveis) {

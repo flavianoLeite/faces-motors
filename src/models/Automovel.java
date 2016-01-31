@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Automovel {
@@ -73,7 +72,7 @@ public class Automovel {
 	
 	@Override
 	public String toString() {	
-		return this.id + " "+ getModelo().getMarca() + " modelo: " + modelo + " ano modelo: " + anoModelo + " fabricação: " + anoFabricacao;
+		return this.id + " "+ getModelo().getMarca() + " modelo: " + modelo + " ano modelo: " + anoModelo + " fabricaï¿½ï¿½o: " + anoFabricacao;
 	}
 	
 }
