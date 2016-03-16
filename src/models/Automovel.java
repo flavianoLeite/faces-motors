@@ -1,6 +1,7 @@
 package models;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -9,15 +10,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name="Automovel.listarTodos", query="select a from Automovel a")
 public class Automovel {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
+	private String placa;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Modelo modelo;
 	
 	private Integer anoFabricacao;
@@ -34,8 +38,7 @@ public class Automovel {
 	
 	
 	public Automovel() {
-		super();
-		// TODO Auto-generated constructor stub
+		super();	
 	}
 	
 	public List<Opcional> getOpcionais() {
@@ -64,9 +67,18 @@ public class Automovel {
 	public void setModelo(Modelo modelo) {
 		this.modelo = modelo;
 	}
+	
 	public Integer getAnoFabricacao() {
 		return anoFabricacao;
 	}
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
 	public void setAnoFabricacao(Integer anoFabricacao) {
 		this.anoFabricacao = anoFabricacao;
 	}
@@ -83,10 +95,10 @@ public class Automovel {
 		this.observacoes = observacoes;
 	}
 	
-	@Override
+	/*@Override
 	public String toString() {	
 		return this.id + " "+ getModelo().getMarca() + " modelo: " + modelo + " ano modelo: " + anoModelo + " fabrica��o: " + anoFabricacao;
-	}
+	}*/
 	public Integer getIdade() {
 		return idade;
 	}

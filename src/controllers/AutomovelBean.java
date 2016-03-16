@@ -38,7 +38,7 @@ public class AutomovelBean {
 	@SuppressWarnings("unchecked")
 	public List<Automovel> getAutomoveis() {
 		EntityManager em = JPAUtil.getEntityManager();
-		Query q = em.createQuery("select a from models.Automovel a", Automovel.class);	
+		Query q = em.createNamedQuery("Automovel.listarTodos", Automovel.class);	
 		
 		automoveis = q.getResultList();
 		em.close();

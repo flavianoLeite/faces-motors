@@ -5,12 +5,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import models.Automovel;
-import persistence.JPAUtil;
+import models.Marca;
 
 public class BuscadorDeAutomovel {
 	public static void main(String[] args) {		
 		EntityManager em = JPAUtil.getEntityManager();
-		Query q = em.createQuery("select a from Automovel a where a.anoModelo < 2011", Automovel.class);
+		/*Marca marca = em.find(Marca.class, 3L);
+		String jplq = "select a from Automovel a where a.modelo.montadora = :marca";*/
+		//Query q = em.createQuery(jplq, Automovel.class);
+		Query q = em.createNamedQuery("Automovel.listarTodos", Automovel.class);
+		//q.setParameter("marca", marca);
 		@SuppressWarnings("unchecked")
 		List<Automovel> list = q.getResultList();
 		for(Automovel a : list){

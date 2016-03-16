@@ -13,8 +13,10 @@ public class Opcional {
 	@Id @GeneratedValue
 	private Long id;
 	private String descricao;
-	@ManyToMany(mappedBy="opcionais")
-	private List<Automovel> automoveis;
+	
+	/*@ManyToMany(mappedBy="opcionais")
+	private List<Automovel> automoveis;*/
+	
 	public Long getId() {
 		return id;
 	}
@@ -27,11 +29,11 @@ public class Opcional {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public List<Automovel> getAutomoveis() {
+	/*public List<Automovel> getAutomoveis() {
 		return automoveis;
 	}
 	public void setAutomoveis(List<Automovel> automoveis) {
 		this.automoveis = automoveis;
-	}
+	}*/
 	
 }

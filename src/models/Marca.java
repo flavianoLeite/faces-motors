@@ -2,26 +2,40 @@ package models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Marca {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	@OneToMany(mappedBy="marca")
+	
+	@OneToMany(mappedBy="montadora")
 	private List<Modelo> modelos;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	private DetalheMarca detalhe;
+	
+	
+	public DetalheMarca getDetalhe() {
+		return detalhe;
+	}
+	public void setDetalhe(DetalheMarca detalhe) {
+		this.detalhe = detalhe;
+		
+	}
 	
 	
 	public Marca() {
-		super();
-		// TODO Auto-generated constructor stub
+		super();		
 	}
 	public Marca(String nome) {
 		this.nome = nome;

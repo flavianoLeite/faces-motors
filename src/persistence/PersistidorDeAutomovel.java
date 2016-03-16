@@ -5,6 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import models.Automovel;
+import models.DetalheMarca;
 import models.Marca;
 import models.Modelo;
 
@@ -13,7 +14,22 @@ public class PersistidorDeAutomovel {
 		EntityManager em = JPAUtil.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		Modelo modelo = new Modelo("Fusca");
+		Marca marca = new Marca("Porshe");
+		Modelo model = new Modelo("Carrera 911");
+		model.setMontadora(marca);
+		model.setPotencia(100);
+		Automovel auto = new Automovel();
+		auto.setModelo(model);
+		em.persist(auto);
+		
+		/*Marca porsche = new Marca("Porsche");
+		em.persist(porsche);
+		
+		Marca ferrari = new Marca("Ferrari");
+		Marca outraFerrari = em.merge(ferrari);
+		System.out.println(ferrari == outraFerrari);*/
+		
+		/*Modelo modelo = new Modelo("Fusca");
 		modelo.setPotencia(60);
 		Marca marca =  new Marca("Volkswagem"); //em.getReference(Marca.class, 11L);
 		em.persist(modelo);
@@ -28,7 +44,7 @@ public class PersistidorDeAutomovel {
 		auto.getTags().add("automático");
 		auto.getTags().add("novo");
 		auto.getTags().add("bom estado");
-		em.persist(auto);
+		em.persist(auto);*/
 		tx.commit();
 		em.close();		
 	}

@@ -1,24 +1,39 @@
 package models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Modelo {
+	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String descricao;
 	private Integer potencia;
-	@ManyToOne
-	private Marca marca;
 	
+	@OneToMany(mappedBy="modelo")
+	private List<Automovel> automoveis;
+	
+	public List<Automovel> getAutomoveis() {
+		return automoveis;
+	}
+
+	public void setAutomoveis(List<Automovel> automoveis) {
+		this.automoveis = automoveis;
+	}
+
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Marca montadora;
 	
 	public Modelo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Modelo(String descricao) {
@@ -42,16 +57,14 @@ public class Modelo {
 	public void setPotencia(Integer potencia) {
 		this.potencia = potencia;
 	}
-	public Marca getMarca() {
-		return marca;
+
+	public Marca getMontadora() {
+		return montadora;
 	}
-	public void setMarca(Marca marca) {
-		/*if(marca != null){
-			if(marca.getModelos() != null){
-				marca.getModelos().add(this);
-			}
-		}*/
-		this.marca = marca;
+
+	public void setMontadora(Marca montadora) {
+		this.montadora = montadora;
 	}
+	
 	
 }

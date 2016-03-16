@@ -1,14 +1,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:body>
 	<h:form>
 		<h:dataTable value="#{automovelBean.automoveis}" var="auto">
 			<h:column>
-		#{auto.marca}
+		#{auto.modelo.montadora.nome}
 		</h:column>
 
 			<h:column>
-		#{auto.modelo}
+		#{auto.modelo.descricao}
 		</h:column>
 		</h:dataTable>
 	</h:form>
